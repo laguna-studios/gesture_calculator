@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
@@ -6,9 +7,7 @@ class AdsCubit extends Cubit<bool> {
   static AdsCubit of(BuildContext context) =>
       BlocProvider.of<AdsCubit>(context);
 
-  final bool releaseMode;
-
-  AdsCubit({this.releaseMode = true}) : super(false);
+  AdsCubit() : super(false);
 
   BannerAd? bannerAd;
   AppOpenAd? _appOpenAd;
@@ -24,8 +23,8 @@ class AdsCubit extends Cubit<bool> {
   }
 
   Future<void> _initBanner() async {
-    String adUnitId = releaseMode
-        ? "ca-app-pub-7519220681088057/7416942476"
+    String adUnitId = kReleaseMode
+        ? "ca-app-pub-4439621725258210/2637337518"
         : "ca-app-pub-3940256099942544/6300978111";
     bannerAd = BannerAd(
         size: AdSize.banner,
@@ -38,8 +37,9 @@ class AdsCubit extends Cubit<bool> {
   }
 
   Future<void> _loadAppOpenAd() async {
+    
     String adUnitId =
-        releaseMode ? "ca-app-pub-7519220681088057/1309745451" : "ca-app-pub-3940256099942544/5575463023";
+        kReleaseMode ? "ca-app-pub-4439621725258210/2963000522" : "ca-app-pub-3940256099942544/5575463023";
     AppOpenAd.load(
         adUnitId: adUnitId,
         request: const AdRequest(),

@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (_) => HistoryCubit(HistoryCubit.defaultState)),
         BlocProvider(
             create: (_) => ReviewCubit(ReviewCubit.defaultState)..appStarted()),
-        BlocProvider(create: (_) => AdsCubit(releaseMode: true)..init()),
+        BlocProvider(create: (_) => AdsCubit()..init()),
         BlocProvider(create: (_) => TutotialCubit()..init())
       ],
       child: Builder(builder: (context) {
