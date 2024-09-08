@@ -1,10 +1,4 @@
 import 'dart:io';
-
-import 'package:calculator/bloc/calculator_cubit.dart';
-import 'package:calculator/data/calculator_repository.dart';
-import 'package:calculator/ui/calculator_text_editing_controller.dart';
-import 'package:calculator/ui/formatter.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
@@ -20,6 +14,10 @@ import 'package:google_mobile_ads/google_mobile_ads.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 
+import 'calculator/bloc/calculator_cubit.dart';
+import 'calculator/data/calculator_repository.dart';
+import 'calculator/ui/calculator_text_editing_controller.dart';
+import 'calculator/ui/formatter.dart';
 import 'ui/index.dart';
 
 void main() async {

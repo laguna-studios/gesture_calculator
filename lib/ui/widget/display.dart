@@ -1,4 +1,3 @@
-import 'package:calculator/bloc/calculator_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,6 +8,8 @@ import 'package:gesture_calculator/bloc/settings_cubit.dart';
 import 'package:gesture_calculator/bloc/tutorial_cubit.dart';
 import 'package:gesture_calculator/ui/index.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
+
+import '../../calculator/bloc/calculator_cubit.dart';
 
 class Display extends StatefulWidget {
   const Display(

@@ -47,8 +47,6 @@ dependencies:
   path_provider: ^2.0.12
   flutter_i18n: ^0.35.1
   flutter_animate: ^4.5.0
-  calculator:
-    path: /Users/ft/LagunaStudios/flutter_flo/calculator
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
   

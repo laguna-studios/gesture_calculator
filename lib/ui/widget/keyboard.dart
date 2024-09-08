@@ -1,10 +1,11 @@
-import 'package:calculator/bloc/calculator_cubit.dart';
-import 'package:calculator/data/model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_i18n/flutter_i18n.dart';
 import 'package:gesture_calculator/bloc/settings_cubit.dart';
 import 'package:gesture_calculator/ui/index.dart';
+
+import '../../calculator/bloc/calculator_cubit.dart';
+import '../../calculator/data/model.dart';
 
 class BaseKeyboard extends StatelessWidget {
   final keyboard = [
