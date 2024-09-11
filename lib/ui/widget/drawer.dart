@@ -24,13 +24,13 @@ class PromoDrawer extends StatelessWidget {
             padding: const EdgeInsets.only(top: 16.0, bottom: 0),
             child: ClipOval(
                 child: Image.asset(
-              "assets/senior_laguna.webp",
+              "assets/lagunastudios.jpg",
               height: 124,
               width: 124,
             )),
           ),
           Text(
-            "Senior Laguna",
+            "Laguna Studios",
             style: TextStyle(fontSize: 24, color: theme.drawerText),
           ),
           Text(
@@ -59,13 +59,6 @@ class PromoDrawer extends StatelessWidget {
             leading: const Icon(Icons.apps),
             onTap: () => openUrl(
                 "https://play.google.com/store/apps/developer?id=Senior+Laguna"),
-          ),
-          ListTile(
-            textColor: theme.drawerText,
-            title: Text(FlutterI18n.translate(context, "drawer.get_premium")),
-            leading: const Icon(Icons.workspace_premium),
-            onTap: () => openUrl(
-                "https://play.google.com/store/apps/details?id=org.seniorlaguna.gcalculator.pro"),
           ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 4.0),
