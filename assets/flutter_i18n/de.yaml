@@ -19,9 +19,9 @@ drawer:
   history: Verlauf
 
   url:
-    terms: "https://seniorlaguna.github.io/calculator/terms_de.html"
-    privacy: "https://seniorlaguna.github.io/calculator/privacy_de.html"
-    contact: "https://seniorlaguna.github.io/contact.html"
+    terms: "https://lagunastudios.de/taschenrechner-nutzungsbedingungen/"
+    privacy: "https://lagunastudios.de/taschenrechner-datenschutzerklaerung/"
+    contact: "https://lagunastudios.de/impressum/"
 
 history:
   empty: Der Verlauf ist noch leer

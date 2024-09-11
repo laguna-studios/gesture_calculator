@@ -53,13 +53,6 @@ class PromoDrawer extends StatelessWidget {
             leading: const Icon(Icons.favorite),
             onTap: likeApp,
           ),
-          ListTile(
-            textColor: theme.drawerText,
-            title: Text(FlutterI18n.translate(context, "drawer.more_apps")),
-            leading: const Icon(Icons.apps),
-            onTap: () => openUrl(
-                "https://play.google.com/store/apps/developer?id=Senior+Laguna"),
-          ),
           const Padding(
             padding: EdgeInsets.symmetric(vertical: 4.0),
             child: Divider(
@@ -94,7 +87,7 @@ class PromoDrawer extends StatelessWidget {
             title: Text(FlutterI18n.translate(context, "drawer.about")),
             leading: const Icon(Icons.people),
             onTap: () =>
-                showAboutDialog(context: context, applicationVersion: "1.1.0"),
+                showAboutDialog(context: context),
           ),
         ],
       ),
