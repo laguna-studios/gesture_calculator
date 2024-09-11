@@ -38,8 +38,9 @@ class AdsCubit extends Cubit<bool> {
 
   Future<void> _loadAppOpenAd() async {
     
-    String adUnitId =
-        kReleaseMode ? "ca-app-pub-4439621725258210/2963000522" : "ca-app-pub-3940256099942544/5575463023";
+    String adUnitId = kReleaseMode 
+    ? "ca-app-pub-4439621725258210/2963000522"
+    : "ca-app-pub-3940256099942544/5575463023";
     AppOpenAd.load(
         adUnitId: adUnitId,
         request: const AdRequest(),
