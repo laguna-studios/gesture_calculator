@@ -3,6 +3,7 @@ run-name: Build Android App
 on: 
   push:
     tags:
+      - '?.?.?'
 
 jobs:
   main:
@@ -16,6 +17,7 @@ jobs:
           channel: stable
       - run: flutter pub get
       - run: flutter test
+      - run: pwd
       - run: flutter build appbundle
       - name: Release
         uses: softprops/action-gh-release@v2
