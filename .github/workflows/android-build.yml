@@ -18,8 +18,9 @@ jobs:
       - run: echo ${{ secrets.KEYSTORE }} | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks
       - run: echo ${{ secrets.KEY_PROPERTIES }} | base64 -d > android/key.properties
       - run: flutter build appbundle
+      - run: flutter build apk
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/app/outputs/bundle/release/app-release.aab
+          files: build/app/outputs/bundle/release/app-release.aab | build/app/outputs/apk/release/app-release.apk
           token: ${{ secrets.PAT }}
