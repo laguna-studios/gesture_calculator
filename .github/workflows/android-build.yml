@@ -17,11 +17,10 @@ jobs:
       - run: flutter test
       - run: echo $GITHUB_WORKSPACE
       - run: ls $GITHUB_WORKSPACE
-      - name: deserialized secrets
-        env:
-          KEYSTORE: 
-          KEY_PROPERTIES: 
-        run: echo ${{ secrets.KEYSTORE }} | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks && echo ${{ secrets.KEY_PROPERTIES }} > android/key.properties
+      - run: echo ${{ secrets.KEYSTORE }} | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks
+      - run: echo ${{ secrets.KEY_PROPERTIES }} | base64 -d > android/key.properties
+      - run: shasum $GITHUB_WORKSPACE/gesture-calculator.jks
+      - run: shasum android/key.properties
       - run: ls $GITHUB_WORKSPACE
       - run: ls $GITHUB_WORKSPACE/android/
       - run: flutter build appbundle
