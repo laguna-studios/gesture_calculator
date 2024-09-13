@@ -15,16 +15,11 @@ jobs:
           channel: stable
       - run: flutter pub get
       - run: flutter test
-      - run: echo $GITHUB_WORKSPACE
-      - run: ls $GITHUB_WORKSPACE
       - run: echo ${{ secrets.KEYSTORE }} | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks
       - run: echo ${{ secrets.KEY_PROPERTIES }} | base64 -d > android/key.properties
-      - run: shasum $GITHUB_WORKSPACE/gesture-calculator.jks
-      - run: shasum android/key.properties
-      - run: ls $GITHUB_WORKSPACE
-      - run: ls $GITHUB_WORKSPACE/android/
       - run: flutter build appbundle
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           files: build/app/outputs/bundle/release/app-release.aab
+          token: ${{ secrets.PAT }}
