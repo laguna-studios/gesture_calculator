@@ -22,5 +22,7 @@ jobs:
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
-          files: build/app/outputs/bundle/release/app-release.aab | build/app/outputs/apk/release/app-release.apk
+          files: | 
+            build/app/outputs/bundle/release/app-release.aab
+            build/app/outputs/apk/release/app-release.apk
           token: ${{ secrets.PAT }}
