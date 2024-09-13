@@ -16,6 +16,7 @@ jobs:
       - run: flutter pub get
       - run: flutter test
       - run: echo $GITHUB_WORKSPACE
+      - run: ls $GITHUB_WORKSPACE
       - name: deserialized secrets
         env:
           KEYSTORE: ${{ secrets.KEYSTORE }}
