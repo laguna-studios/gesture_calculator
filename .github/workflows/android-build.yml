@@ -22,6 +22,8 @@ jobs:
           KEYSTORE: ${{ secrets.KEYSTORE }}
           KEY_PROPERTIES: ${{ secrets.KEY_PROPERTIES }}
         run: echo $KEYSTORE | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks && echo $KEY_PROPERTIES > $GITHUB_WORKSPACE/android/key.properties
+      - run: ls $GITHUB_WORKSPACE
+      - run: ls $GITHUB_WORKSPACE/android/
       - run: flutter build appbundle
       - name: Release
         uses: softprops/action-gh-release@v2
