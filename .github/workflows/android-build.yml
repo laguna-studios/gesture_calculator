@@ -26,3 +26,15 @@ jobs:
             build/app/outputs/bundle/release/app-release.aab
             build/app/outputs/apk/release/app-release.apk
           token: ${{ secrets.PAT }}
+      - name: Release To Play Store
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ SERVICE_ACCOUNT_JSON }}
+          packageName: org.seniorlaguna.gcalculator
+          releaseFiles: build/outputs/bundle/release/app-release.aab
+          track: production
+          status: inProgress
+          inAppUpdatePriority: 2
+          userFraction: 1
+          mappingFile: app/build/outputs/mapping/release/mapping.txt
+          debugSymbols: app/intermediates/merged_native_libs/release/out/lib
