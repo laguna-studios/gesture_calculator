@@ -33,6 +33,5 @@ jobs:
           packageName: org.seniorlaguna.gcalculator
           releaseFiles: build/outputs/bundle/release/app-release.aab
           track: production
-          userFraction: 1.0
           mappingFile: app/build/outputs/mapping/release/mapping.txt
           debugSymbols: app/intermediates/merged_native_libs/release/out/lib
