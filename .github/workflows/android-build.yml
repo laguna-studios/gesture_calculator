@@ -1,31 +1,43 @@
-name: Flutter Build
-run-name: Build Android App
+name: Flutter CI/CD Release
+run-name: Flutter Release
 on: 
-  push:
+  schedule: 
+    # Run on the 1st and 15th of every month
+    - cron: '0 15 1,15 * *'
 
 jobs:
-  main:
+  release:
     runs-on: ubuntu-latest
     steps:
       - name: Clone repository
         uses: actions/checkout@v4
+
+      - name: Increase version and build number
+        run: |
+          VERSION=$(grep -E "^version: " pubspec.yaml | cut -d" " -f2)
+          V=$(expr 1 + $(echo $VERSION | cut -d+ -f1 | cut -d. -f1,2,3 | sed s/"\."//g))
+          MAJOR=$(echo $V | cut -c1)
+          MINOR=$(echo $V | cut -c2)
+          PATCH=$(echo $V | cut -c3)
+          BUILD=$(expr 1 + $(echo $VERSION | cut -d+ -f2))
+          sed -i s/"^version:.*"/"version: $MAJOR.$MINOR.$PATCH+$BUILD"/g pubspec.yaml
+      
+      - name: Commit new version number
+        uses: EndBug/add-and-commit@v9.1.4
+
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-      - run: flutter pub get
-      - run: flutter test
-      - run: echo ${{ secrets.KEYSTORE }} | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks
-      - run: echo ${{ secrets.KEY_PROPERTIES }} | base64 -d > android/key.properties
-      - run: flutter build appbundle
-      - run: flutter build apk
-      - name: Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: | 
-            build/app/outputs/bundle/release/app-release.aab
-            build/app/outputs/apk/release/app-release.apk
-          token: ${{ secrets.PAT }}
+      
+      - name: Deserialize Secrets
+        run: | 
+          echo ${{ secrets.KEYSTORE }} | base64 -d > $GITHUB_WORKSPACE/gesture-calculator.jks
+          echo ${{ secrets.KEY_PROPERTIES }} | base64 -d > android/key.properties
+
+      - name: Build App Bundle
+        run: flutter build appbundle
+
       - name: Release To Play Store
         uses: r0adkll/upload-google-play@v1
         with:
@@ -33,3 +45,8 @@ jobs:
           packageName: org.seniorlaguna.gcalculator
           releaseFiles: build/app/outputs/bundle/release/app-release.aab
           track: production
+      
+      - name: Delete Secrets
+        run: |
+          rm $GITHUB_WORKSPACE/gesture-calculator.jks
+          rm android/key.properties
