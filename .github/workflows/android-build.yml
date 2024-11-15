@@ -1,6 +1,7 @@
 name: Flutter CI/CD Release
 run-name: Flutter Release
-on: 
+on:
+  workflow_dispatch:
   schedule: 
     # Run on the 1st and 15th of every month
     - cron: '0 15 1,15 * *'
