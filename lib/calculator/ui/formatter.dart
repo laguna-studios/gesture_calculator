@@ -112,8 +112,9 @@ class SimpleFormatter extends ExpressionFormatter {
   int toUnformattedCursor(
       int formattedCursorPosition, String formattedExpression) {
     // if cursor position is unknown put it at the end
-    if (formattedCursorPosition == -1)
+    if (formattedCursorPosition == -1) {
       return unformat(formattedExpression).length;
+    }
 
     int cursorPos = 0;
 

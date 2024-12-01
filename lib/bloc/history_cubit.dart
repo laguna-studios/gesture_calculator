@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:flutter/foundation.dart';
-import 'package:gesture_calculator/ui/index.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 part 'history_cubit.freezed.dart';

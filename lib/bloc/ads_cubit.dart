@@ -12,7 +12,7 @@ class AdsCubit extends Cubit<bool> {
   BannerAd? bannerAd;
   AppOpenAd? _appOpenAd;
 
-  final Duration _appOpenAdMaxAge = Duration(hours: 4);
+  final Duration _appOpenAdMaxAge = const Duration(hours: 4);
   final int _showAdLimit = 4;
   int _appOpenings = 0;
   DateTime? _appOpenAdAge;

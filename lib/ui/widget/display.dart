@@ -78,12 +78,12 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
                         // Calcualtor Display
                         SizedBox(
                             height: widget.height,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            child: const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: SingleChildScrollView(
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: const [
+                                  children: [
                                     _BannerAd(),
                                     _CalculatorInput(),
                                     _CalculatorOutput(),
@@ -142,9 +142,7 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
 }
 
 class _CalculatorOutput extends StatelessWidget {
-  const _CalculatorOutput({
-    super.key,
-  });
+  const _CalculatorOutput();
 
   @override
   Widget build(BuildContext context) {
@@ -168,9 +166,7 @@ class _CalculatorOutput extends StatelessWidget {
 }
 
 class _CalculatorInput extends StatelessWidget {
-  const _CalculatorInput({
-    super.key,
-  });
+  const _CalculatorInput();
 
   @override
   Widget build(BuildContext context) {
@@ -200,9 +196,7 @@ class _CalculatorInput extends StatelessWidget {
 }
 
 class _BannerAd extends StatelessWidget {
-  const _BannerAd({
-    super.key,
-  });
+  const _BannerAd();
 
   @override
   Widget build(BuildContext context) {
@@ -222,9 +216,7 @@ class _BannerAd extends StatelessWidget {
 }
 
 class _HistoryClearButton extends StatelessWidget {
-  const _HistoryClearButton({
-    super.key,
-  });
+  const _HistoryClearButton();
 
   @override
   Widget build(BuildContext context) {
@@ -249,9 +241,7 @@ class _HistoryClearButton extends StatelessWidget {
 }
 
 class _DisplayHandle extends StatelessWidget {
-  const _DisplayHandle({
-    super.key,
-  });
+  const _DisplayHandle();
 
   @override
   Widget build(BuildContext context) {
@@ -271,7 +261,6 @@ class _DisplayHandle extends StatelessWidget {
 
 class _History extends StatelessWidget {
   const _History({
-    super.key,
     required AnimationController controller,
   }) : _controller = controller;
 
@@ -293,9 +282,7 @@ class _History extends StatelessWidget {
 }
 
 class _HistoryEmptyMessage extends StatelessWidget {
-  const _HistoryEmptyMessage({
-    super.key,
-  });
+  const _HistoryEmptyMessage();
 
   @override
   Widget build(BuildContext context) {
@@ -310,7 +297,6 @@ class _HistoryEmptyMessage extends StatelessWidget {
 
 class _HistoryList extends StatelessWidget {
   const _HistoryList({
-    super.key,
     required AnimationController controller,
     required this.theme,
   }) : _controller = controller;
