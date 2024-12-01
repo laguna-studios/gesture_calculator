@@ -3,14 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 
 class TutotialCubit extends HydratedCubit<int> {
-  
   static const int openSettingsStep = 1;
   static const int openScientificKeyboardStep = 2;
   static const int switchScientificKeyboardStep = 3;
   static const int openHistoryStep = 4;
   static const int openDrawerStep = 5;
   static const int done = 6;
-  
+
   static TutotialCubit of(BuildContext context) => BlocProvider.of<TutotialCubit>(context);
 
   TutotialCubit() : super(0);
@@ -40,7 +39,7 @@ class TutotialCubit extends HydratedCubit<int> {
   @override
   Map<String, dynamic>? toJson(int state) {
     if (state == TutotialCubit.done) {
-          return {"value" : TutotialCubit.done};
+      return {"value": TutotialCubit.done};
     }
     return null;
   }

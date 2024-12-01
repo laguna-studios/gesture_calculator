@@ -1,7 +1,4 @@
-enum CalculatorError {
-  none,
-  numberToBig
-}
+enum CalculatorError { none, numberToBig }
 
 enum CalculatorToken {
   num_0,
@@ -112,4 +109,3 @@ extension CalculatorTokenExtension on CalculatorToken {
     }[this]!;
   }
 }
-

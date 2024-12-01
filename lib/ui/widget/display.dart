@@ -7,13 +7,13 @@ import 'package:gesture_calculator/bloc/history_cubit.dart';
 import 'package:gesture_calculator/bloc/settings_cubit.dart';
 import 'package:gesture_calculator/bloc/tutorial_cubit.dart';
 import 'package:gesture_calculator/ui/index.dart';
+import 'package:gesture_calculator/ui/screen/tutorial_message.dart';
 import 'package:google_mobile_ads/google_mobile_ads.dart';
 
 import '../../calculator/bloc/calculator_cubit.dart';
 
 class Display extends StatefulWidget {
-  const Display(
-      {super.key, required this.height, required this.expandedHeight});
+  const Display({super.key, required this.height, required this.expandedHeight});
 
   final double height;
   final double expandedHeight;
@@ -28,8 +28,7 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(
-        vsync: this, duration: const Duration(milliseconds: 300));
+    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 300));
   }
 
   @override
@@ -52,10 +51,9 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
             animation: _controller,
             builder: (context, _) {
               double maxExtension = widget.expandedHeight - widget.height;
-              double currentHeight =
-                  widget.height + maxExtension * _controller.value;
+              double currentHeight = widget.height + maxExtension * _controller.value;
               double currentExtension = currentHeight - widget.height;
-      
+
               return GestureDetector(
                   onVerticalDragUpdate: _onKeyboardDragUpdate,
                   onVerticalDragEnd: _onKeyboardDragEnd,
@@ -91,19 +89,16 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
                                 ),
                               ),
                             )),
-      
+
                         // History
-                        (currentExtension < 124)
-                            ? const Spacer()
-                            : Expanded(child: _History(controller: _controller)),
-      
+                        (currentExtension < 124) ? const Spacer() : Expanded(child: _History(controller: _controller)),
+
                         // Clear History Button
                         if (currentExtension >= 74)
                           (_controller.value == 1)
-                              ? const _HistoryClearButton().animate().fade(
-                                  duration: const Duration(milliseconds: 500))
+                              ? const _HistoryClearButton().animate().fade(duration: const Duration(milliseconds: 500))
                               : const SizedBox(height: 50),
-      
+
                         // History Handle
                         if (currentExtension >= 24) const _DisplayHandle(),
                       ],
@@ -117,8 +112,7 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
   void _onKeyboardDragUpdate(DragUpdateDetails details) {
     // History disabled
     if (!SettingsCubit.of(context).state.historyEnabled) return;
-    _controller.value +=
-        details.delta.dy / (widget.expandedHeight - widget.height);
+    _controller.value += details.delta.dy / (widget.expandedHeight - widget.height);
   }
 
   void _onKeyboardDragEnd(DragEndDetails details) {
@@ -147,18 +141,14 @@ class _CalculatorOutput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
-        buildWhen: (previous, current) =>
-            previous.displayFontSizeFactor != current.displayFontSizeFactor,
+        buildWhen: (previous, current) => previous.displayFontSizeFactor != current.displayFontSizeFactor,
         builder: (context, settingsState) {
-          return BlocBuilder<CalculatorCubit, CalculatorState>(
-              builder: (context, state) {
+          return BlocBuilder<CalculatorCubit, CalculatorState>(builder: (context, state) {
             return Text(
               state.result,
               style: TextStyle(
                   fontSize: 40.0 * settingsState.displayFontSizeFactor,
-                  color: Theme.of(context)
-                      .extension<CalculatorTheme>()!
-                      .resultText),
+                  color: Theme.of(context).extension<CalculatorTheme>()!.resultText),
             );
           });
         });
@@ -171,8 +161,7 @@ class _CalculatorInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SettingsCubit, SettingsState>(
-      buildWhen: (previous, current) =>
-          previous.displayFontSizeFactor != current.displayFontSizeFactor,
+      buildWhen: (previous, current) => previous.displayFontSizeFactor != current.displayFontSizeFactor,
       builder: (context, settingsState) {
         return TextField(
           controller: CalculatorCubit.of(context).textController,
@@ -180,15 +169,13 @@ class _CalculatorInput extends StatelessWidget {
           textAlign: TextAlign.right,
           style: TextStyle(
             fontSize: 50.0 * settingsState.displayFontSizeFactor,
-            color:
-                Theme.of(context).extension<CalculatorTheme>()!.expressionText,
+            color: Theme.of(context).extension<CalculatorTheme>()!.expressionText,
           ),
           minLines: null,
           maxLines: null,
           readOnly: true,
           showCursor: true,
-          decoration:
-              const InputDecoration(border: InputBorder.none, hintText: "0"),
+          decoration: const InputDecoration(border: InputBorder.none, hintText: "0"),
         );
       },
     );
@@ -226,12 +213,10 @@ class _HistoryClearButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: HistoryCubit.of(context).clearHistory,
         style: ButtonStyle(
-            backgroundColor:
-                MaterialStateProperty.all(theme.clearHistoryBackground),
+            backgroundColor: MaterialStateProperty.all(theme.clearHistoryBackground),
             foregroundColor: MaterialStateProperty.all(theme.clearHistoryText),
             minimumSize: MaterialStateProperty.all(const Size.fromHeight(50)),
-            textStyle:
-                MaterialStateProperty.all(const TextStyle(fontSize: 18))),
+            textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 18))),
         child: Text(
           FlutterI18n.translate(context, "history.clear"),
         ),
@@ -270,8 +255,7 @@ class _History extends StatelessWidget {
   Widget build(BuildContext context) {
     CalculatorTheme theme = Theme.of(context).extension<CalculatorTheme>()!;
 
-    return BlocBuilder<HistoryCubit, HistoryState>(
-        builder: (context, historyState) {
+    return BlocBuilder<HistoryCubit, HistoryState>(builder: (context, historyState) {
       if (historyState.entries.isEmpty) {
         return const _HistoryEmptyMessage();
       }
@@ -306,22 +290,17 @@ class _HistoryList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<HistoryCubit, HistoryState>(
-        builder: (context, historyState) {
+    return BlocBuilder<HistoryCubit, HistoryState>(builder: (context, historyState) {
       return ListView.separated(
           separatorBuilder: (context, index) => const Divider(),
           itemCount: historyState.entries.length,
           itemBuilder: ((context, index) => ListTile(
                 onTap: () {
-                  CalculatorCubit.of(context)
-                      .setExpression(historyState.entries[index]);
+                  CalculatorCubit.of(context).setExpression(historyState.entries[index]);
                   _controller.reverse();
                 },
                 title: Text(
-                  CalculatorCubit.of(context)
-                      .textController
-                      .expressionFormatter
-                      .format(historyState.entries[index]),
+                  CalculatorCubit.of(context).textController.expressionFormatter.format(historyState.entries[index]),
                   style: TextStyle(fontSize: 32, color: theme.expressionText),
                 ),
                 trailing: IconButton(

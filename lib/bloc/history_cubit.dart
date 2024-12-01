@@ -8,29 +8,22 @@ part 'history_cubit.g.dart';
 
 @freezed
 class HistoryState with _$HistoryState {
-  const factory HistoryState(
-      {required List<String> entries}) = _HistoryState;
+  const factory HistoryState({required List<String> entries}) = _HistoryState;
 
-  factory HistoryState.fromJson(Map<String, Object?> json) =>
-      _$HistoryStateFromJson(json);
+  factory HistoryState.fromJson(Map<String, Object?> json) => _$HistoryStateFromJson(json);
 }
 
-
 class HistoryCubit extends HydratedCubit<HistoryState> {
-
   static const HistoryState defaultState = HistoryState(entries: []);
 
-  static HistoryCubit of(BuildContext context) =>
-      BlocProvider.of<HistoryCubit>(context);
+  static HistoryCubit of(BuildContext context) => BlocProvider.of<HistoryCubit>(context);
 
   HistoryCubit(super.state);
-
 
   Future<void> add(String entry) async {
     // dont add same entry twice in a row
     if (state.entries.isNotEmpty && state.entries.first == entry) return;
 
-    
     List<String> h = List.from(state.entries);
     h.insert(0, entry);
     emit(state.copyWith(entries: h));
@@ -40,7 +33,7 @@ class HistoryCubit extends HydratedCubit<HistoryState> {
     List<String> h = List.from(state.entries);
     h.removeAt(index);
     emit(state.copyWith(entries: h));
-  } 
+  }
 
   Future<void> clearHistory() async {
     emit(state.copyWith(entries: []));
@@ -55,5 +48,4 @@ class HistoryCubit extends HydratedCubit<HistoryState> {
   Map<String, dynamic>? toJson(HistoryState state) {
     return state.toJson();
   }
-
 }

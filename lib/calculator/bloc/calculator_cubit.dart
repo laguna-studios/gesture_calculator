@@ -20,13 +20,9 @@ class CalculatorCubit extends Cubit<CalculatorState> {
   final CalculatorTextEditingController textController;
   final Function(String) onResult;
 
-  static CalculatorCubit of(BuildContext context) =>
-      BlocProvider.of<CalculatorCubit>(context);
+  static CalculatorCubit of(BuildContext context) => BlocProvider.of<CalculatorCubit>(context);
 
-  CalculatorCubit(super.initialState,
-      {
-      required this.textController,
-      required this.onResult});
+  CalculatorCubit(super.initialState, {required this.textController, required this.onResult});
 
   Future<void> init() async {
     CalculatorRepository.setDecimalPlaces(state.decimalPlaces);
@@ -113,15 +109,12 @@ class CalculatorCubit extends Cubit<CalculatorState> {
       emit(state.copyWith(isCalculating: false));
       return "";
     }
-    
-    
   }
 
   Future<void> _showResultPreview() async {
     try {
       String expression = textController.text;
-      String result = await _calculate(
-          textController.expressionFormatter.unformat(expression));
+      String result = await _calculate(textController.expressionFormatter.unformat(expression));
 
       // it took to long to calculate
       if (expression != textController.text) return;

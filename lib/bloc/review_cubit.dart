@@ -4,7 +4,6 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:in_app_review/in_app_review.dart';
 
 class ReviewCubit extends HydratedCubit<int> {
-
   static int defaultState = 0;
   static ReviewCubit of(BuildContext context) => BlocProvider.of<ReviewCubit>(context);
 
@@ -12,7 +11,7 @@ class ReviewCubit extends HydratedCubit<int> {
 
   Future<void> appStarted() async {
     if (state < 0) return;
-    emit(state + 1);  
+    emit(state + 1);
   }
 
   Future<bool> requestReview() async {
@@ -35,6 +34,6 @@ class ReviewCubit extends HydratedCubit<int> {
 
   @override
   Map<String, dynamic>? toJson(int state) {
-    return {"value" : state};
+    return {"value": state};
   }
 }

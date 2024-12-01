@@ -30,8 +30,7 @@ void main() async {
   GoogleFonts.config.allowRuntimeFetching = false;
 
   // Local Storage with Hive
-  HydratedBloc.storage = await HydratedStorage.build(
-      storageDirectory: await getApplicationDocumentsDirectory());
+  HydratedBloc.storage = await HydratedStorage.build(storageDirectory: await getApplicationDocumentsDirectory());
   CalculatorRepository calculatorRepository = CalculatorRepository();
 
   // Launch App
@@ -47,12 +46,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-            create: (_) => SettingsCubit(SettingsCubit.defaultState)
-              ..handleFullscreenSettings()),
+        BlocProvider(create: (_) => SettingsCubit(SettingsCubit.defaultState)..handleFullscreenSettings()),
         BlocProvider(create: (_) => HistoryCubit(HistoryCubit.defaultState)),
-        BlocProvider(
-            create: (_) => ReviewCubit(ReviewCubit.defaultState)..appStarted()),
+        BlocProvider(create: (_) => ReviewCubit(ReviewCubit.defaultState)..appStarted()),
         BlocProvider(create: (_) => AdsCubit()..init()),
         BlocProvider(create: (_) => TutotialCubit()..init())
       ],
@@ -66,22 +62,18 @@ class MyApp extends StatelessWidget {
                 isCalculating: false,
               ),
               textController: CalculatorTextEditingController(
-                  Platform.localeName.contains("en")
-                      ? SimpleFormatter.english()
-                      : SimpleFormatter.nonenglish()), onResult: (result) {
+                  Platform.localeName.contains("en") ? SimpleFormatter.english() : SimpleFormatter.nonenglish()),
+              onResult: (result) {
             HistoryCubit.of(context).add(result);
           })
             ..init(),
           child: BlocBuilder<SettingsCubit, SettingsState>(
-            buildWhen: (previous, current) =>
-                previous.lightTheme != current.lightTheme,
+            buildWhen: (previous, current) => previous.lightTheme != current.lightTheme,
             builder: (context, state) => MaterialApp(
-              onGenerateTitle: (context) =>
-                  FlutterI18n.translate(context, "app.title"),
+              onGenerateTitle: (context) => FlutterI18n.translate(context, "app.title"),
               localizationsDelegates: [
                 FlutterI18nDelegate(
-                  translationLoader: FileTranslationLoader(
-                      decodeStrategies: [YamlDecodeStrategy()]),
+                  translationLoader: FileTranslationLoader(decodeStrategies: [YamlDecodeStrategy()]),
                 ),
                 ...GlobalMaterialLocalizations.delegates,
                 GlobalWidgetsLocalizations.delegate
@@ -91,9 +83,7 @@ class MyApp extends StatelessWidget {
                 Locale("en"),
               ],
               theme: state.lightTheme
-                  ? ThemeData.light().copyWith(
-                      textTheme: GoogleFonts.sourceSans3TextTheme(),
-                      extensions: [lightTheme])
+                  ? ThemeData.light().copyWith(textTheme: GoogleFonts.sourceSans3TextTheme(), extensions: [lightTheme])
                   : ThemeData.dark().copyWith(
                       textTheme: GoogleFonts.sourceSans3TextTheme().copyWith(
                         headlineMedium: const TextStyle(color: Colors.white),
@@ -104,11 +94,8 @@ class MyApp extends StatelessWidget {
                         bodyLarge: const TextStyle(color: Colors.white),
                       ),
                       extensions: [darkTheme]),
-              home: BlocBuilder<TutotialCubit, int>(
-                  builder: (context, tutorialState) {
-                return AbsorbPointer(
-                    absorbing: tutorialState != TutotialCubit.done,
-                    child: const MainScreen());
+              home: BlocBuilder<TutotialCubit, int>(builder: (context, tutorialState) {
+                return AbsorbPointer(absorbing: tutorialState != TutotialCubit.done, child: const MainScreen());
               }),
             ),
           ),

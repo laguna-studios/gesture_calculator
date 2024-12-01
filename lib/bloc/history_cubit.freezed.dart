@@ -24,22 +24,19 @@ mixin _$HistoryState {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $HistoryStateCopyWith<HistoryState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $HistoryStateCopyWith<HistoryState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $HistoryStateCopyWith<$Res> {
-  factory $HistoryStateCopyWith(
-          HistoryState value, $Res Function(HistoryState) then) =
+  factory $HistoryStateCopyWith(HistoryState value, $Res Function(HistoryState) then) =
       _$HistoryStateCopyWithImpl<$Res, HistoryState>;
   @useResult
   $Res call({List<String> entries});
 }
 
 /// @nodoc
-class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
-    implements $HistoryStateCopyWith<$Res> {
+class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState> implements $HistoryStateCopyWith<$Res> {
   _$HistoryStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -62,10 +59,8 @@ class _$HistoryStateCopyWithImpl<$Res, $Val extends HistoryState>
 }
 
 /// @nodoc
-abstract class _$$_HistoryStateCopyWith<$Res>
-    implements $HistoryStateCopyWith<$Res> {
-  factory _$$_HistoryStateCopyWith(
-          _$_HistoryState value, $Res Function(_$_HistoryState) then) =
+abstract class _$$_HistoryStateCopyWith<$Res> implements $HistoryStateCopyWith<$Res> {
+  factory _$$_HistoryStateCopyWith(_$_HistoryState value, $Res Function(_$_HistoryState) then) =
       __$$_HistoryStateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -73,12 +68,9 @@ abstract class _$$_HistoryStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_HistoryStateCopyWithImpl<$Res>
-    extends _$HistoryStateCopyWithImpl<$Res, _$_HistoryState>
+class __$$_HistoryStateCopyWithImpl<$Res> extends _$HistoryStateCopyWithImpl<$Res, _$_HistoryState>
     implements _$$_HistoryStateCopyWith<$Res> {
-  __$$_HistoryStateCopyWithImpl(
-      _$_HistoryState _value, $Res Function(_$_HistoryState) _then)
-      : super(_value, _then);
+  __$$_HistoryStateCopyWithImpl(_$_HistoryState _value, $Res Function(_$_HistoryState) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -97,11 +89,9 @@ class __$$_HistoryStateCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_HistoryState implements _HistoryState {
-  const _$_HistoryState({required final List<String> entries})
-      : _entries = entries;
+  const _$_HistoryState({required final List<String> entries}) : _entries = entries;
 
-  factory _$_HistoryState.fromJson(Map<String, dynamic> json) =>
-      _$$_HistoryStateFromJson(json);
+  factory _$_HistoryState.fromJson(Map<String, dynamic> json) => _$$_HistoryStateFromJson(json);
 
   final List<String> _entries;
   @override
@@ -126,8 +116,7 @@ class _$_HistoryState implements _HistoryState {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_entries));
+  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_entries));
 
   @JsonKey(ignore: true)
   @override
@@ -144,16 +133,13 @@ class _$_HistoryState implements _HistoryState {
 }
 
 abstract class _HistoryState implements HistoryState {
-  const factory _HistoryState({required final List<String> entries}) =
-      _$_HistoryState;
+  const factory _HistoryState({required final List<String> entries}) = _$_HistoryState;
 
-  factory _HistoryState.fromJson(Map<String, dynamic> json) =
-      _$_HistoryState.fromJson;
+  factory _HistoryState.fromJson(Map<String, dynamic> json) = _$_HistoryState.fromJson;
 
   @override
   List<String> get entries;
   @override
   @JsonKey(ignore: true)
-  _$$_HistoryStateCopyWith<_$_HistoryState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_HistoryStateCopyWith<_$_HistoryState> get copyWith => throw _privateConstructorUsedError;
 }

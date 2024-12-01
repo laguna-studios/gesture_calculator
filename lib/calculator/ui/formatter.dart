@@ -5,12 +5,10 @@ abstract class ExpressionFormatter {
 
   String unformat(String expression);
 
-  int toFormattedCursor(
-      int unformattedCursorPosition, String formattedExpression);
+  int toFormattedCursor(int unformattedCursorPosition, String formattedExpression);
 
-  int toUnformattedCursor(
-      int formattedCursorPosition, String formattedExpression);
-  
+  int toUnformattedCursor(int formattedCursorPosition, String formattedExpression);
+
   int adjustCursor(int formattedCursorPosition, String formattedExpression);
 }
 
@@ -44,8 +42,7 @@ class SimpleFormatter extends ExpressionFormatter {
   @override
   String format(String expression) {
     // set decimal separator
-    var e = expression.replaceAll(
-        CalculatorToken.dot.calculatorToken, decimalSeparator);
+    var e = expression.replaceAll(CalculatorToken.dot.calculatorToken, decimalSeparator);
 
     String newExpression = "";
     int startNumber = -1;
@@ -69,8 +66,7 @@ class SimpleFormatter extends ExpressionFormatter {
           newExpression += _formatNumber(e.substring(startNumber, i));
           startNumber = -1;
           behindDot = false;
-        }
-        else {
+        } else {
           behindDot = false;
         }
         newExpression += c;
@@ -86,14 +82,11 @@ class SimpleFormatter extends ExpressionFormatter {
 
   @override
   String unformat(String expression) {
-    return expression
-        .replaceAll(groupSeparator, "")
-        .replaceAll(decimalSeparator, ".");
+    return expression.replaceAll(groupSeparator, "").replaceAll(decimalSeparator, ".");
   }
 
   @override
-  int toFormattedCursor(
-      int unformattedCursorPosition, String formattedExpression) {
+  int toFormattedCursor(int unformattedCursorPosition, String formattedExpression) {
     int cursorPos = 0;
     int tokensFound = 0;
 
@@ -109,8 +102,7 @@ class SimpleFormatter extends ExpressionFormatter {
   }
 
   @override
-  int toUnformattedCursor(
-      int formattedCursorPosition, String formattedExpression) {
+  int toUnformattedCursor(int formattedCursorPosition, String formattedExpression) {
     // if cursor position is unknown put it at the end
     if (formattedCursorPosition == -1) {
       return unformat(formattedExpression).length;
@@ -125,25 +117,23 @@ class SimpleFormatter extends ExpressionFormatter {
 
     return cursorPos;
   }
-  
+
   @override
   int adjustCursor(int formattedCursorPosition, String formattedExpression) {
-
     // if negative cursor position put it at the end
     if (formattedCursorPosition == -1) return formattedExpression.length;
     if (formattedCursorPosition == 0) return formattedCursorPosition;
 
-    String left = formattedExpression[formattedCursorPosition-1];
+    String left = formattedExpression[formattedCursorPosition - 1];
     // cursor is after group separator
-    if (left == groupSeparator) return formattedCursorPosition-1;
+    if (left == groupSeparator) return formattedCursorPosition - 1;
 
     int curPos = formattedCursorPosition;
     while ("abcdfghijklmnopqrstuvwxyz⁻¹√".contains(left)) {
       curPos++;
-      left = formattedExpression[curPos-1];
+      left = formattedExpression[curPos - 1];
     }
 
     return curPos;
   }
 }
-

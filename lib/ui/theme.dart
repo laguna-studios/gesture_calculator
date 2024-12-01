@@ -90,8 +90,7 @@ class CalculatorTheme extends ThemeExtension<CalculatorTheme> {
   }
 
   @override
-  ThemeExtension<CalculatorTheme> lerp(
-      ThemeExtension<CalculatorTheme>? other, double t) {
+  ThemeExtension<CalculatorTheme> lerp(ThemeExtension<CalculatorTheme>? other, double t) {
     return this;
   }
 }

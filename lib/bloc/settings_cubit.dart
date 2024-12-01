@@ -16,14 +16,12 @@ class SettingsState with _$SettingsState {
       required bool fullscreen,
       required bool historyEnabled,
       required bool scientificModeEnabled,
-      required bool useRadians
-      }) = _SettingsState;
+      required bool useRadians}) = _SettingsState;
 
-  factory SettingsState.fromJson(Map<String, Object?> json) =>
-      _$SettingsStateFromJson(json);
+  factory SettingsState.fromJson(Map<String, Object?> json) => _$SettingsStateFromJson(json);
 }
 
-class SettingsCubit extends HydratedCubit<SettingsState>  {
+class SettingsCubit extends HydratedCubit<SettingsState> {
   static const SettingsState defaultState = SettingsState(
       lightTheme: true,
       displayFontSizeFactor: 1.0,
@@ -31,44 +29,41 @@ class SettingsCubit extends HydratedCubit<SettingsState>  {
       fullscreen: false,
       historyEnabled: true,
       scientificModeEnabled: true,
-      useRadians: true
-      );
+      useRadians: true);
 
-  static SettingsCubit of(BuildContext context) =>
-      BlocProvider.of<SettingsCubit>(context);
+  static SettingsCubit of(BuildContext context) => BlocProvider.of<SettingsCubit>(context);
 
   SettingsCubit(super.initialState);
 
   Future<void> handleFullscreenSettings() async {
-    state.fullscreen ? 
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky) : SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+    state.fullscreen
+        ? SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky)
+        : SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   }
 
   Future<void> set(
-      {
-        double? displayFontSizeFactor, double? keyboardFontSizeFactor,
-        bool? lightTheme,
-        bool? fullscreen,
+      {double? displayFontSizeFactor,
+      double? keyboardFontSizeFactor,
+      bool? lightTheme,
+      bool? fullscreen,
       bool? scientificModeEnabled,
       bool? historyEnabled,
       bool? useRadians}) async {
-
     emit(state.copyWith(
-      displayFontSizeFactor: displayFontSizeFactor ?? state.displayFontSizeFactor,
-      keyboardFontSizeFactor: keyboardFontSizeFactor ?? state.keyboardFontSizeFactor,
-      lightTheme: lightTheme ?? state.lightTheme,
+        displayFontSizeFactor: displayFontSizeFactor ?? state.displayFontSizeFactor,
+        keyboardFontSizeFactor: keyboardFontSizeFactor ?? state.keyboardFontSizeFactor,
+        lightTheme: lightTheme ?? state.lightTheme,
         fullscreen: fullscreen ?? state.fullscreen,
-        scientificModeEnabled:
-            scientificModeEnabled ?? state.scientificModeEnabled,
+        scientificModeEnabled: scientificModeEnabled ?? state.scientificModeEnabled,
         historyEnabled: historyEnabled ?? state.historyEnabled,
         useRadians: useRadians ?? state.useRadians));
   }
-  
+
   @override
   SettingsState? fromJson(Map<String, dynamic> json) {
     return SettingsState.fromJson(json);
   }
-  
+
   @override
   Map<String, dynamic>? toJson(SettingsState state) {
     return state.toJson();

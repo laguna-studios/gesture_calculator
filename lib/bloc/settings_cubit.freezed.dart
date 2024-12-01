@@ -30,14 +30,12 @@ mixin _$SettingsState {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $SettingsStateCopyWith<SettingsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $SettingsStateCopyWith<SettingsState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SettingsStateCopyWith<$Res> {
-  factory $SettingsStateCopyWith(
-          SettingsState value, $Res Function(SettingsState) then) =
+  factory $SettingsStateCopyWith(SettingsState value, $Res Function(SettingsState) then) =
       _$SettingsStateCopyWithImpl<$Res, SettingsState>;
   @useResult
   $Res call(
@@ -51,8 +49,7 @@ abstract class $SettingsStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
-    implements $SettingsStateCopyWith<$Res> {
+class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState> implements $SettingsStateCopyWith<$Res> {
   _$SettingsStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -105,10 +102,8 @@ class _$SettingsStateCopyWithImpl<$Res, $Val extends SettingsState>
 }
 
 /// @nodoc
-abstract class _$$_SettingsStateCopyWith<$Res>
-    implements $SettingsStateCopyWith<$Res> {
-  factory _$$_SettingsStateCopyWith(
-          _$_SettingsState value, $Res Function(_$_SettingsState) then) =
+abstract class _$$_SettingsStateCopyWith<$Res> implements $SettingsStateCopyWith<$Res> {
+  factory _$$_SettingsStateCopyWith(_$_SettingsState value, $Res Function(_$_SettingsState) then) =
       __$$_SettingsStateCopyWithImpl<$Res>;
   @override
   @useResult
@@ -123,12 +118,9 @@ abstract class _$$_SettingsStateCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$_SettingsStateCopyWithImpl<$Res>
-    extends _$SettingsStateCopyWithImpl<$Res, _$_SettingsState>
+class __$$_SettingsStateCopyWithImpl<$Res> extends _$SettingsStateCopyWithImpl<$Res, _$_SettingsState>
     implements _$$_SettingsStateCopyWith<$Res> {
-  __$$_SettingsStateCopyWithImpl(
-      _$_SettingsState _value, $Res Function(_$_SettingsState) _then)
-      : super(_value, _then);
+  __$$_SettingsStateCopyWithImpl(_$_SettingsState _value, $Res Function(_$_SettingsState) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -186,8 +178,7 @@ class _$_SettingsState implements _SettingsState {
       required this.scientificModeEnabled,
       required this.useRadians});
 
-  factory _$_SettingsState.fromJson(Map<String, dynamic> json) =>
-      _$$_SettingsStateFromJson(json);
+  factory _$_SettingsState.fromJson(Map<String, dynamic> json) => _$$_SettingsStateFromJson(json);
 
   @override
   final bool lightTheme;
@@ -214,33 +205,22 @@ class _$_SettingsState implements _SettingsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_SettingsState &&
-            (identical(other.lightTheme, lightTheme) ||
-                other.lightTheme == lightTheme) &&
+            (identical(other.lightTheme, lightTheme) || other.lightTheme == lightTheme) &&
             (identical(other.displayFontSizeFactor, displayFontSizeFactor) ||
                 other.displayFontSizeFactor == displayFontSizeFactor) &&
             (identical(other.keyboardFontSizeFactor, keyboardFontSizeFactor) ||
                 other.keyboardFontSizeFactor == keyboardFontSizeFactor) &&
-            (identical(other.fullscreen, fullscreen) ||
-                other.fullscreen == fullscreen) &&
-            (identical(other.historyEnabled, historyEnabled) ||
-                other.historyEnabled == historyEnabled) &&
+            (identical(other.fullscreen, fullscreen) || other.fullscreen == fullscreen) &&
+            (identical(other.historyEnabled, historyEnabled) || other.historyEnabled == historyEnabled) &&
             (identical(other.scientificModeEnabled, scientificModeEnabled) ||
                 other.scientificModeEnabled == scientificModeEnabled) &&
-            (identical(other.useRadians, useRadians) ||
-                other.useRadians == useRadians));
+            (identical(other.useRadians, useRadians) || other.useRadians == useRadians));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      lightTheme,
-      displayFontSizeFactor,
-      keyboardFontSizeFactor,
-      fullscreen,
-      historyEnabled,
-      scientificModeEnabled,
-      useRadians);
+  int get hashCode => Object.hash(runtimeType, lightTheme, displayFontSizeFactor, keyboardFontSizeFactor, fullscreen,
+      historyEnabled, scientificModeEnabled, useRadians);
 
   @JsonKey(ignore: true)
   @override
@@ -266,8 +246,7 @@ abstract class _SettingsState implements SettingsState {
       required final bool scientificModeEnabled,
       required final bool useRadians}) = _$_SettingsState;
 
-  factory _SettingsState.fromJson(Map<String, dynamic> json) =
-      _$_SettingsState.fromJson;
+  factory _SettingsState.fromJson(Map<String, dynamic> json) = _$_SettingsState.fromJson;
 
   @override
   bool get lightTheme;
@@ -285,6 +264,5 @@ abstract class _SettingsState implements SettingsState {
   bool get useRadians;
   @override
   @JsonKey(ignore: true)
-  _$$_SettingsStateCopyWith<_$_SettingsState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_SettingsStateCopyWith<_$_SettingsState> get copyWith => throw _privateConstructorUsedError;
 }

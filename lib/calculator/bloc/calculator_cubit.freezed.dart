@@ -22,23 +22,19 @@ mixin _$CalculatorState {
   bool get isCalculating => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
-  $CalculatorStateCopyWith<CalculatorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  $CalculatorStateCopyWith<CalculatorState> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $CalculatorStateCopyWith<$Res> {
-  factory $CalculatorStateCopyWith(
-          CalculatorState value, $Res Function(CalculatorState) then) =
+  factory $CalculatorStateCopyWith(CalculatorState value, $Res Function(CalculatorState) then) =
       _$CalculatorStateCopyWithImpl<$Res, CalculatorState>;
   @useResult
-  $Res call(
-      {String result, int decimalPlaces, bool useRadians, bool isCalculating});
+  $Res call({String result, int decimalPlaces, bool useRadians, bool isCalculating});
 }
 
 /// @nodoc
-class _$CalculatorStateCopyWithImpl<$Res, $Val extends CalculatorState>
-    implements $CalculatorStateCopyWith<$Res> {
+class _$CalculatorStateCopyWithImpl<$Res, $Val extends CalculatorState> implements $CalculatorStateCopyWith<$Res> {
   _$CalculatorStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -76,23 +72,18 @@ class _$CalculatorStateCopyWithImpl<$Res, $Val extends CalculatorState>
 }
 
 /// @nodoc
-abstract class _$$_CalculatorStateCopyWith<$Res>
-    implements $CalculatorStateCopyWith<$Res> {
-  factory _$$_CalculatorStateCopyWith(
-          _$_CalculatorState value, $Res Function(_$_CalculatorState) then) =
+abstract class _$$_CalculatorStateCopyWith<$Res> implements $CalculatorStateCopyWith<$Res> {
+  factory _$$_CalculatorStateCopyWith(_$_CalculatorState value, $Res Function(_$_CalculatorState) then) =
       __$$_CalculatorStateCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call(
-      {String result, int decimalPlaces, bool useRadians, bool isCalculating});
+  $Res call({String result, int decimalPlaces, bool useRadians, bool isCalculating});
 }
 
 /// @nodoc
-class __$$_CalculatorStateCopyWithImpl<$Res>
-    extends _$CalculatorStateCopyWithImpl<$Res, _$_CalculatorState>
+class __$$_CalculatorStateCopyWithImpl<$Res> extends _$CalculatorStateCopyWithImpl<$Res, _$_CalculatorState>
     implements _$$_CalculatorStateCopyWith<$Res> {
-  __$$_CalculatorStateCopyWithImpl(
-      _$_CalculatorState _value, $Res Function(_$_CalculatorState) _then)
+  __$$_CalculatorStateCopyWithImpl(_$_CalculatorState _value, $Res Function(_$_CalculatorState) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -128,10 +119,7 @@ class __$$_CalculatorStateCopyWithImpl<$Res>
 
 class _$_CalculatorState implements _CalculatorState {
   const _$_CalculatorState(
-      {required this.result,
-      required this.decimalPlaces,
-      required this.useRadians,
-      required this.isCalculating});
+      {required this.result, required this.decimalPlaces, required this.useRadians, required this.isCalculating});
 
   @override
   final String result;
@@ -153,17 +141,13 @@ class _$_CalculatorState implements _CalculatorState {
         (other.runtimeType == runtimeType &&
             other is _$_CalculatorState &&
             (identical(other.result, result) || other.result == result) &&
-            (identical(other.decimalPlaces, decimalPlaces) ||
-                other.decimalPlaces == decimalPlaces) &&
-            (identical(other.useRadians, useRadians) ||
-                other.useRadians == useRadians) &&
-            (identical(other.isCalculating, isCalculating) ||
-                other.isCalculating == isCalculating));
+            (identical(other.decimalPlaces, decimalPlaces) || other.decimalPlaces == decimalPlaces) &&
+            (identical(other.useRadians, useRadians) || other.useRadians == useRadians) &&
+            (identical(other.isCalculating, isCalculating) || other.isCalculating == isCalculating));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, result, decimalPlaces, useRadians, isCalculating);
+  int get hashCode => Object.hash(runtimeType, result, decimalPlaces, useRadians, isCalculating);
 
   @JsonKey(ignore: true)
   @override
@@ -189,6 +173,5 @@ abstract class _CalculatorState implements CalculatorState {
   bool get isCalculating;
   @override
   @JsonKey(ignore: true)
-  _$$_CalculatorStateCopyWith<_$_CalculatorState> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$_CalculatorStateCopyWith<_$_CalculatorState> get copyWith => throw _privateConstructorUsedError;
 }
