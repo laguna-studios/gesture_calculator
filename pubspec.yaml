@@ -52,6 +52,7 @@ dependencies:
   flutter_localizations:
     sdk: flutter
   plugin_platform_interface: ^2.1.8
+  package_info_plus: ^8.0.2
   
 dev_dependencies:
   flutter_test:

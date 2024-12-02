@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:flutter_i18n/flutter_i18n.dart";
 import "package:gesture_calculator/ui/index.dart";
 import "package:in_app_review/in_app_review.dart";
+import "package:package_info_plus/package_info_plus.dart";
 import "package:url_launcher/url_launcher.dart";
 
 class PromoDrawer extends StatelessWidget {
@@ -58,7 +59,11 @@ class PromoDrawer extends StatelessWidget {
             textColor: theme.drawerText,
             title: Text(FlutterI18n.translate(context, "drawer.about")),
             leading: const Icon(Icons.people),
-            onTap: () => showAboutDialog(context: context),
+            onTap: () async {
+              final PackageInfo info = await PackageInfo.fromPlatform();
+              if (!context.mounted) return;
+              showAboutDialog(context: context, applicationVersion: "Version: ${info.version}+${info.buildNumber}");
+            },
           ),
         ],
       ),
