@@ -40,7 +40,7 @@ dependencies:
   bloc: ^8.0.3
   equatable: ^2.0.3
   flutter_slidable: ^3.1.0
-  in_app_review: ^2.0.4
+  in_app_review: ^2.0.10
   url_launcher: ^6.1.9
   google_mobile_ads: ^5.1.0
   hydrated_bloc: ^9.1.0

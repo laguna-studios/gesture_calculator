@@ -6,9 +6,7 @@ import "package:package_info_plus/package_info_plus.dart";
 import "package:url_launcher/url_launcher.dart";
 
 class PromoDrawer extends StatelessWidget {
-  const PromoDrawer({
-    super.key,
-  });
+  const PromoDrawer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -70,12 +68,7 @@ class PromoDrawer extends StatelessWidget {
     );
   }
 
-  Future<void> likeApp() async {
-    final isInAppReviewAvailable = await InAppReview.instance.isAvailable();
-    isInAppReviewAvailable
-        ? InAppReview.instance.requestReview()
-        : openUrl("https://play.google.com/store/apps/details?id=org.seniorlaguna.gcalculator");
-  }
+  void likeApp() => InAppReview.instance.openStoreListing();
 
   Future<void> openUrl(String urlString) async {
     final Uri? url = Uri.tryParse(urlString);
