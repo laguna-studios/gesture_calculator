@@ -105,7 +105,7 @@ extension CalculatorTokenExtension on CalculatorToken {
       CalculatorToken.clear: "C",
       CalculatorToken.clearOne: "<-",
       CalculatorToken.equals: "=",
-      CalculatorToken.radOrDeg: "radOrDeg"
+      CalculatorToken.radOrDeg: "radOrDeg",
     }[this]!;
   }
 }

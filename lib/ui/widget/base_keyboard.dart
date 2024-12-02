@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:gesture_calculator/calculator/bloc/calculator_cubit.dart';
-import 'package:gesture_calculator/calculator/data/model.dart';
-import 'package:gesture_calculator/ui/index.dart';
-import 'package:gesture_calculator/ui/widget/keyboard_key.dart';
+import "package:flutter/material.dart";
+import "package:gesture_calculator/calculator/bloc/calculator_cubit.dart";
+import "package:gesture_calculator/calculator/data/model.dart";
+import "package:gesture_calculator/ui/index.dart";
+import "package:gesture_calculator/ui/widget/keyboard_key.dart";
 
 class BaseKeyboard extends StatelessWidget {
   final keyboard = [
@@ -31,16 +31,17 @@ class BaseKeyboard extends StatelessWidget {
                 for (CalculatorToken token in row)
                   Expanded(
                     child: KeyboardKey(
-                        token: token,
-                        theme: Theme.of(context).extension<CalculatorTheme>()!,
-                        callback: () {
-                          CalculatorCubit.of(context).onTokenPressed(token);
-                        },
-                        textSize: 42),
-                  )
+                      token: token,
+                      theme: Theme.of(context).extension<CalculatorTheme>()!,
+                      callback: () {
+                        CalculatorCubit.of(context).onTokenPressed(token);
+                      },
+                      textSize: 42,
+                    ),
+                  ),
               ],
             ),
-          )
+          ),
       ],
     );
   }

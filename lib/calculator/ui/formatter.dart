@@ -1,4 +1,4 @@
-import '../data/model.dart';
+import "package:gesture_calculator/calculator/data/model.dart";
 
 abstract class ExpressionFormatter {
   String format(String expression);

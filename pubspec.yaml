@@ -49,6 +49,9 @@ dependencies:
   flutter_animate: ^4.5.0
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.0
+  flutter_localizations:
+    sdk: flutter
+  plugin_platform_interface: ^2.1.8
   
 dev_dependencies:
   flutter_test:

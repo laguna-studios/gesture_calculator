@@ -1,19 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../data/calculator_repository.dart';
-import '../data/model.dart';
-import '../ui/calculator_text_editing_controller.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:gesture_calculator/calculator/data/calculator_repository.dart";
+import "package:gesture_calculator/calculator/data/model.dart";
+import "package:gesture_calculator/calculator/ui/calculator_text_editing_controller.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
 
-part 'calculator_cubit.freezed.dart';
+part "calculator_cubit.freezed.dart";
 
 @freezed
 class CalculatorState with _$CalculatorState {
-  const factory CalculatorState(
-      {required String result,
-      required int decimalPlaces,
-      required bool useRadians,
-      required bool isCalculating}) = _CalculatorState;
+  const factory CalculatorState({
+    required String result,
+    required int decimalPlaces,
+    required bool useRadians,
+    required bool isCalculating,
+  }) = _CalculatorState;
 }
 
 class CalculatorCubit extends Cubit<CalculatorState> {

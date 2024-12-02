@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:gesture_calculator/ui/index.dart';
+import "package:flutter/material.dart";
+import "package:gesture_calculator/ui/index.dart";
 
 class SettingsPopup extends StatelessWidget {
   const SettingsPopup({

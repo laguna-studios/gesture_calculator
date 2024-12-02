@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
-import 'package:in_app_review/in_app_review.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:hydrated_bloc/hydrated_bloc.dart";
+import "package:in_app_review/in_app_review.dart";
 
 class ReviewCubit extends HydratedCubit<int> {
   static int defaultState = 0;

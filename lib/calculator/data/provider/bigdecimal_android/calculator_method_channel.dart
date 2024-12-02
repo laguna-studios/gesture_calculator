@@ -1,39 +1,39 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/services.dart';
+import "package:flutter/foundation.dart";
+import "package:flutter/services.dart";
 
-import 'calculator_platform_interface.dart';
+import "package:gesture_calculator/calculator/data/provider/bigdecimal_android/calculator_platform_interface.dart";
 
 /// An implementation of [CalculatorPlatform] that uses method channels.
 class MethodChannelCalculator extends CalculatorPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('calculator');
+  final methodChannel = const MethodChannel("calculator");
 
   @override
   Future<String> evaluate(String expression) async {
-    final result = await methodChannel.invokeMethod<String>('evaluate', {"expression": expression});
+    final result = await methodChannel.invokeMethod<String>("evaluate", {"expression": expression});
     return result!;
   }
 
   @override
   Future<int> getDecimalPlaces() async {
-    final result = await methodChannel.invokeMethod<int>('getDecimalPlaces');
+    final result = await methodChannel.invokeMethod<int>("getDecimalPlaces");
     return result!;
   }
 
   @override
   Future<bool> getUseRadians() async {
-    final result = await methodChannel.invokeMethod<bool>('getUseRadians');
+    final result = await methodChannel.invokeMethod<bool>("getUseRadians");
     return result!;
   }
 
   @override
   Future<void> setDecimalPlaces(int decimalPlaces) async {
-    methodChannel.invokeMethod<void>('setDecimalPlaces', {"decimalPlaces": decimalPlaces});
+    methodChannel.invokeMethod<void>("setDecimalPlaces", {"decimalPlaces": decimalPlaces});
   }
 
   @override
   Future<void> setUseRadians(bool useRadians) async {
-    methodChannel.invokeMethod<void>('setUseRadians', {"useRadians": useRadians});
+    methodChannel.invokeMethod<void>("setUseRadians", {"useRadians": useRadians});
   }
 }

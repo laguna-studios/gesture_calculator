@@ -1,4 +1,4 @@
-import 'provider/bigdecimal_android/calculator_platform_interface.dart';
+import "package:gesture_calculator/calculator/data/provider/bigdecimal_android/calculator_platform_interface.dart";
 
 class CalculatorRepository {
   static Future<String> evaluate(String expression) async {

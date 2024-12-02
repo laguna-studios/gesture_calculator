@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:gesture_calculator/bloc/ads_cubit.dart';
-import 'package:gesture_calculator/bloc/review_cubit.dart';
-import 'package:gesture_calculator/bloc/settings_cubit.dart';
-import 'package:gesture_calculator/bloc/tutorial_cubit.dart';
-import 'package:gesture_calculator/ui/index.dart';
-import 'package:gesture_calculator/ui/screen/tutorial_message.dart';
+import "package:flutter/material.dart";
+import "package:gesture_calculator/bloc/ads_cubit.dart";
+import "package:gesture_calculator/bloc/review_cubit.dart";
+import "package:gesture_calculator/bloc/settings_cubit.dart";
+import "package:gesture_calculator/bloc/tutorial_cubit.dart";
+import "package:gesture_calculator/ui/index.dart";
+import "package:gesture_calculator/ui/screen/tutorial_message.dart";
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -83,28 +83,30 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
                 fit: StackFit.expand,
                 children: [
                   Positioned(
-                      bottom: 0,
-                      child: SizedBox(
-                        height: screenHeight * (1 - _displayHeight),
-                        width: width,
-                        child: SlideKeyboard(
-                          foregroundWidget: BaseKeyboard(),
-                          backgroundWidget: AdvancedKeyboard(
-                            showFirstKeyboard: !_showSecondKeyboard,
-                          ),
-                          onSwitchDetected: () {
-                            setState(() {
-                              _showSecondKeyboard = !_showSecondKeyboard;
-                            });
-                          },
+                    bottom: 0,
+                    child: SizedBox(
+                      height: screenHeight * (1 - _displayHeight),
+                      width: width,
+                      child: SlideKeyboard(
+                        foregroundWidget: BaseKeyboard(),
+                        backgroundWidget: AdvancedKeyboard(
+                          showFirstKeyboard: !_showSecondKeyboard,
                         ),
-                      )),
+                        onSwitchDetected: () {
+                          setState(() {
+                            _showSecondKeyboard = !_showSecondKeyboard;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
                   Positioned(
-                      top: 0,
-                      child: Display(
-                        height: screenHeight * _displayHeight,
-                        expandedHeight: screenHeight,
-                      ))
+                    top: 0,
+                    child: Display(
+                      height: screenHeight * _displayHeight,
+                      expandedHeight: screenHeight,
+                    ),
+                  ),
                 ],
               ),
             ),

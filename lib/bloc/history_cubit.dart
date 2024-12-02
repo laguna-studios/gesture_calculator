@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:hydrated_bloc/hydrated_bloc.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:freezed_annotation/freezed_annotation.dart";
+import "package:hydrated_bloc/hydrated_bloc.dart";
 
-part 'history_cubit.freezed.dart';
-part 'history_cubit.g.dart';
+part "history_cubit.freezed.dart";
+part "history_cubit.g.dart";
 
 @freezed
 class HistoryState with _$HistoryState {

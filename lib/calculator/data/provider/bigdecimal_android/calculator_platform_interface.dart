@@ -1,6 +1,6 @@
-import 'package:plugin_platform_interface/plugin_platform_interface.dart';
+import "package:plugin_platform_interface/plugin_platform_interface.dart";
 
-import 'calculator_method_channel.dart';
+import "package:gesture_calculator/calculator/data/provider/bigdecimal_android/calculator_method_channel.dart";
 
 abstract class CalculatorPlatform extends PlatformInterface {
   /// Constructs a CalculatorPlatform.

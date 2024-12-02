@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
+import "package:flutter/material.dart";
 
-import '../data/model.dart';
-import 'formatter.dart';
+import "package:gesture_calculator/calculator/data/model.dart";
+import "package:gesture_calculator/calculator/ui/formatter.dart";
 
 class CalculatorTextEditingController extends TextEditingController {
   final ExpressionFormatter expressionFormatter;

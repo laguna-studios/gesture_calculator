@@ -1,16 +1,20 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:gesture_calculator/bloc/settings_cubit.dart';
-import 'package:gesture_calculator/bloc/tutorial_cubit.dart';
-import 'package:gesture_calculator/ui/screen/tutorial_message.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:gesture_calculator/bloc/settings_cubit.dart";
+import "package:gesture_calculator/bloc/tutorial_cubit.dart";
+import "package:gesture_calculator/ui/screen/tutorial_message.dart";
 
 class SlideKeyboard extends StatefulWidget {
   final Widget foregroundWidget;
   final Widget backgroundWidget;
   final Function onSwitchDetected;
 
-  const SlideKeyboard(
-      {super.key, required this.onSwitchDetected, required this.foregroundWidget, required this.backgroundWidget});
+  const SlideKeyboard({
+    super.key,
+    required this.onSwitchDetected,
+    required this.foregroundWidget,
+    required this.backgroundWidget,
+  });
 
   @override
   State<SlideKeyboard> createState() => _SlideKeyboardState();
@@ -77,15 +81,16 @@ class _SlideKeyboardState extends State<SlideKeyboard> with SingleTickerProvider
                 children: [
                   widget.backgroundWidget,
                   AnimatedBuilder(
-                      animation: _controller,
-                      child: widget.foregroundWidget,
-                      builder: (context, widget) {
-                        return SizedBox(
-                          width: constraints.maxWidth * (1 - 0.2 * _controller.value),
-                          height: constraints.maxHeight * (1 - 2 / 7 * _controller.value),
-                          child: widget,
-                        );
-                      })
+                    animation: _controller,
+                    child: widget.foregroundWidget,
+                    builder: (context, widget) {
+                      return SizedBox(
+                        width: constraints.maxWidth * (1 - 0.2 * _controller.value),
+                        height: constraints.maxHeight * (1 - 2 / 7 * _controller.value),
+                        child: widget,
+                      );
+                    },
+                  ),
                 ],
               ),
             ),

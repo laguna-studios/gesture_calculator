@@ -1,10 +1,10 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_i18n/flutter_i18n.dart';
-import 'package:gesture_calculator/bloc/settings_cubit.dart';
-import 'package:gesture_calculator/calculator/bloc/calculator_cubit.dart';
-import 'package:gesture_calculator/calculator/data/model.dart';
-import 'package:gesture_calculator/ui/index.dart';
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:flutter_i18n/flutter_i18n.dart";
+import "package:gesture_calculator/bloc/settings_cubit.dart";
+import "package:gesture_calculator/calculator/bloc/calculator_cubit.dart";
+import "package:gesture_calculator/calculator/data/model.dart";
+import "package:gesture_calculator/ui/index.dart";
 
 class KeyboardKey extends StatelessWidget {
   final List<CalculatorToken> highlightedOperators = [
@@ -23,13 +23,14 @@ class KeyboardKey extends StatelessWidget {
   final double textSize;
   final bool extendedBackground;
 
-  KeyboardKey(
-      {super.key,
-      required this.token,
-      required this.callback,
-      required this.theme,
-      required this.textSize,
-      this.extendedBackground = false});
+  KeyboardKey({
+    super.key,
+    required this.token,
+    required this.callback,
+    required this.theme,
+    required this.textSize,
+    this.extendedBackground = false,
+  });
 
   Color get textColor {
     if (highlightedOperators.contains(token)) {
@@ -69,13 +70,15 @@ class KeyboardKey extends StatelessWidget {
               size: 38 * settingsState.keyboardFontSizeFactor,
             );
           } else if (token == CalculatorToken.radOrDeg) {
-            return BlocBuilder<CalculatorCubit, CalculatorState>(builder: (context, state) {
-              return Text(
-                key: ValueKey(token),
-                state.useRadians ? "RAD" : "DEG",
-                style: TextStyle(fontSize: textSize * settingsState.keyboardFontSizeFactor, color: textColor),
-              );
-            });
+            return BlocBuilder<CalculatorCubit, CalculatorState>(
+              builder: (context, state) {
+                return Text(
+                  key: ValueKey(token),
+                  state.useRadians ? "RAD" : "DEG",
+                  style: TextStyle(fontSize: textSize * settingsState.keyboardFontSizeFactor, color: textColor),
+                );
+              },
+            );
           }
 
           return AnimatedSwitcher(
@@ -97,16 +100,19 @@ class KeyboardKey extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return OutlinedButton(
-        style: ButtonStyle(
-            padding: MaterialStateProperty.all(EdgeInsets.zero),
-            backgroundColor: MaterialStateProperty.all(backgroundColor),
-            overlayColor: MaterialStateProperty.all(overlayColor),
-            side: MaterialStateProperty.all(
-                BorderSide(color: Theme.of(context).extension<CalculatorTheme>()!.spacingColor, width: 0.5)),
-            shape: MaterialStateProperty.all(const RoundedRectangleBorder())),
-        onPressed: callback,
-        child: Center(
-          child: getText(context),
-        ));
+      style: ButtonStyle(
+        padding: MaterialStateProperty.all(EdgeInsets.zero),
+        backgroundColor: MaterialStateProperty.all(backgroundColor),
+        overlayColor: MaterialStateProperty.all(overlayColor),
+        side: MaterialStateProperty.all(
+          BorderSide(color: Theme.of(context).extension<CalculatorTheme>()!.spacingColor, width: 0.5),
+        ),
+        shape: MaterialStateProperty.all(const RoundedRectangleBorder()),
+      ),
+      onPressed: callback,
+      child: Center(
+        child: getText(context),
+      ),
+    );
   }
 }

@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_mobile_ads/google_mobile_ads.dart';
+import "package:flutter/foundation.dart";
+import "package:flutter/material.dart";
+import "package:flutter_bloc/flutter_bloc.dart";
+import "package:google_mobile_ads/google_mobile_ads.dart";
 
 class AdsCubit extends Cubit<bool> {
   static AdsCubit of(BuildContext context) => BlocProvider.of<AdsCubit>(context);
@@ -25,12 +25,13 @@ class AdsCubit extends Cubit<bool> {
     String adUnitId =
         kReleaseMode ? "ca-app-pub-4439621725258210/2637337518" : "ca-app-pub-3940256099942544/6300978111";
     bannerAd = BannerAd(
-        size: AdSize.banner,
-        adUnitId: adUnitId,
-        listener: BannerAdListener(
-          onAdLoaded: (_) => emit(true),
-        ),
-        request: const AdRequest());
+      size: AdSize.banner,
+      adUnitId: adUnitId,
+      listener: BannerAdListener(
+        onAdLoaded: (_) => emit(true),
+      ),
+      request: const AdRequest(),
+    );
     bannerAd?.load();
   }
 
@@ -38,14 +39,16 @@ class AdsCubit extends Cubit<bool> {
     String adUnitId =
         kReleaseMode ? "ca-app-pub-4439621725258210/2963000522" : "ca-app-pub-3940256099942544/5575463023";
     AppOpenAd.load(
-        adUnitId: adUnitId,
-        request: const AdRequest(),
-        adLoadCallback: AppOpenAdLoadCallback(
-            onAdLoaded: ((ad) {
-              _appOpenAd = ad;
-              _appOpenAdAge = DateTime.now();
-            }),
-            onAdFailedToLoad: (_) {}));
+      adUnitId: adUnitId,
+      request: const AdRequest(),
+      adLoadCallback: AppOpenAdLoadCallback(
+        onAdLoaded: ((ad) {
+          _appOpenAd = ad;
+          _appOpenAdAge = DateTime.now();
+        }),
+        onAdFailedToLoad: (_) {},
+      ),
+    );
   }
 
   Future<void> showAppOpenAd() async {
