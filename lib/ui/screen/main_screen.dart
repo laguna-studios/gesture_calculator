@@ -32,12 +32,17 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state != AppLifecycleState.resumed) return;
-    SettingsCubit.of(context).handleFullscreenSettings();
+    _onAppResumed();
+  }
 
-    ReviewCubit.of(context).requestReview().then((value) {
-      if (!context.mounted) return;
-      if (!value) AdsCubit.of(context).showAppOpenAd();
-    });
+  Future<void> _onAppResumed() async {
+    SettingsCubit.of(context).handleFullscreenSettings();
+    final bool askedForRequest = await ReviewCubit.of(context).requestReview();
+    
+    if (askedForRequest) return;
+    if (!mounted) return;
+    
+    AdsCubit.of(context).showAppOpenAd();
   }
 
   @override
