@@ -1,0 +1,19 @@
+name: CICD
+run-name: Release Flutter App To Play Store
+on:
+  workflow-dispatch:
+  schedule:
+    # schedule on 1st and 15th of every month
+    cron: '0 15 1,15 * *'
+
+jobs:
+  cicd:
+    runs-on: ubuntu-latest
+    name: CICD
+    steps:
+      - uses: laguna-studios/fhs@1.0.0
+        with:
+          keystore_base64: ${{ secrets.KEYSTORE }}
+          key_properties_file: ${{ secrets.KEY_PROPERTIES }}
+          service_account: ${{ secrets.SERVICE_ACCOUNT }}
+          package_name: de.seniorlaguna.currency_calculator
