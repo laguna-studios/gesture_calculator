@@ -130,12 +130,12 @@ class _DisplayState extends State<Display> with SingleTickerProviderStateMixin {
     }
   }
 
-  void _tutorialShowHistory(BuildContext context) {
+  Future<void> _tutorialShowHistory(BuildContext context) async {
     _controller.forward();
-    Future.delayed(const Duration(milliseconds: 1500), () {
-      _controller.reverse();
-      TutotialCubit.of(context).goToState(TutotialCubit.openDrawerStep);
-    });
+    await Future.delayed(const Duration(milliseconds: 1500));
+    if (!context.mounted) return;
+    _controller.reverse();
+    TutotialCubit.of(context).goToState(TutotialCubit.openDrawerStep);
   }
 }
 
