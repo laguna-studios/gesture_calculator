@@ -223,10 +223,10 @@ class _HistoryClearButton extends StatelessWidget {
       child: OutlinedButton(
         onPressed: HistoryCubit.of(context).clearHistory,
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(theme.clearHistoryBackground),
-          foregroundColor: MaterialStateProperty.all(theme.clearHistoryText),
-          minimumSize: MaterialStateProperty.all(const Size.fromHeight(50)),
-          textStyle: MaterialStateProperty.all(const TextStyle(fontSize: 18)),
+          backgroundColor: WidgetStatePropertyAll(theme.clearHistoryBackground),
+          foregroundColor: WidgetStatePropertyAll(theme.clearHistoryText),
+          minimumSize: const WidgetStatePropertyAll(Size.fromHeight(50)),
+          textStyle: const WidgetStatePropertyAll(TextStyle(fontSize: 18)),
         ),
         child: Text(
           FlutterI18n.translate(context, "history.clear"),

@@ -35,6 +35,7 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
     SettingsCubit.of(context).handleFullscreenSettings();
 
     ReviewCubit.of(context).requestReview().then((value) {
+      if (!context.mounted) return;
       if (!value) AdsCubit.of(context).showAppOpenAd();
     });
   }
@@ -51,33 +52,33 @@ class _MainScreenState extends State<MainScreen> with WidgetsBindingObserver {
         endDrawer: const SettingsDrawer(),
         body: TutorialMessage(
           tutorialStep: TutotialCubit.switchScientificKeyboardStep,
-          callback: (context) {
+          callback: (context) async {
             setState(() => _showSecondKeyboard = true);
-            Future.delayed(const Duration(milliseconds: 1500), () {
-              setState(() {
-                _showSecondKeyboard = false;
-              });
-              TutotialCubit.of(context).goToState(TutotialCubit.openHistoryStep);
+            await Future.delayed(const Duration(milliseconds: 1500));
+            if (!context.mounted) return;
+            setState(() {
+              _showSecondKeyboard = false;
             });
+            TutotialCubit.of(context).goToState(TutotialCubit.openHistoryStep);
           },
           child: TutorialMessage(
             tutorialStep: TutotialCubit.openSettingsStep,
             skipToStep: TutotialCubit.done,
             callback: (context) async {
               Scaffold.of(context).openEndDrawer();
-              Future.delayed(const Duration(milliseconds: 1500), () {
-                Scaffold.of(context).closeEndDrawer();
-                TutotialCubit.of(context).goToState(TutotialCubit.openScientificKeyboardStep);
-              });
+              await Future.delayed(const Duration(milliseconds: 1500));
+              if (!context.mounted) return;
+              Scaffold.of(context).closeEndDrawer();
+              TutotialCubit.of(context).goToState(TutotialCubit.openScientificKeyboardStep);
             },
             child: TutorialMessage(
               tutorialStep: TutotialCubit.openDrawerStep,
-              callback: (context) {
+              callback: (context) async {
                 Scaffold.of(context).openDrawer();
-                Future.delayed(const Duration(milliseconds: 1500), () {
-                  Scaffold.of(context).closeDrawer();
-                  TutotialCubit.of(context).goToState(TutotialCubit.done);
-                });
+                await Future.delayed(const Duration(milliseconds: 1500));
+                if (!context.mounted) return;
+                Scaffold.of(context).closeDrawer();
+                TutotialCubit.of(context).goToState(TutotialCubit.done);
               },
               child: Stack(
                 fit: StackFit.expand,

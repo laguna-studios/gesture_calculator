@@ -101,13 +101,13 @@ class KeyboardKey extends StatelessWidget {
   Widget build(BuildContext context) {
     return OutlinedButton(
       style: ButtonStyle(
-        padding: MaterialStateProperty.all(EdgeInsets.zero),
-        backgroundColor: MaterialStateProperty.all(backgroundColor),
-        overlayColor: MaterialStateProperty.all(overlayColor),
-        side: MaterialStateProperty.all(
+        padding: const WidgetStatePropertyAll(EdgeInsets.zero),
+        backgroundColor: WidgetStatePropertyAll(backgroundColor),
+        overlayColor: WidgetStatePropertyAll(overlayColor),
+        side: WidgetStatePropertyAll(
           BorderSide(color: Theme.of(context).extension<CalculatorTheme>()!.spacingColor, width: 0.5),
         ),
-        shape: MaterialStateProperty.all(const RoundedRectangleBorder()),
+        shape: const WidgetStatePropertyAll(RoundedRectangleBorder()),
       ),
       onPressed: callback,
       child: Center(

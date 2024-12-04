@@ -44,9 +44,9 @@ class TutorialMessage extends StatelessWidget {
                         TutotialCubit.of(context).skipTo(skipToStep!);
                         Navigator.pop(dialogContext);
                       },
-                      style: ButtonStyle(
-                        side: MaterialStateProperty.all(BorderSide.none),
-                        foregroundColor: MaterialStateProperty.all(Colors.grey),
+                      style: const ButtonStyle(
+                        side: WidgetStatePropertyAll(BorderSide.none),
+                        foregroundColor: WidgetStatePropertyAll(Colors.grey),
                       ),
                       child: Text(FlutterI18n.translate(context, "tutorial.skip")),
                     ),
@@ -57,7 +57,7 @@ class TutorialMessage extends StatelessWidget {
                   if (!context.mounted) return;
                   callback(context);
                 },
-                style: ButtonStyle(side: MaterialStateProperty.all(BorderSide.none)),
+                style: const ButtonStyle(side: WidgetStatePropertyAll(BorderSide.none)),
                 child: Text(FlutterI18n.translate(context, "tutorial.ok")),
               ),
             ],
