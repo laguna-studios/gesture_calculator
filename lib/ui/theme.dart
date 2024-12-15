@@ -101,9 +101,9 @@ class CalculatorTheme extends ThemeExtension<CalculatorTheme> {
 final lightTheme = CalculatorTheme(
   const Color(0xFF4047F0),
   Colors.white,
-  Colors.white.withOpacity(0.3),
+  Colors.white.withValues(alpha: 0.3),
   const Color(0xFFDE5050),
-  Colors.redAccent.withOpacity(0.3),
+  Colors.redAccent.withValues(alpha: 0.3),
   const Color(0xFFC4C4C4),
   Colors.black54,
   const Color(0xffF6F6F6),
@@ -124,9 +124,9 @@ final lightTheme = CalculatorTheme(
 final darkTheme = CalculatorTheme(
   const Color(0xFF4047F0),
   Colors.white,
-  Colors.white.withOpacity(0.3),
+  Colors.white.withValues(alpha: 0.3),
   const Color(0xFFDE5050),
-  Colors.redAccent.withOpacity(0.3),
+  Colors.redAccent.withValues(alpha: 0.3),
   Colors.white10,
   Colors.white,
   Colors.black12,
