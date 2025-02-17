@@ -16,4 +16,4 @@ jobs:
           keystore_base64: ${{ secrets.KEYSTORE }}
           key_properties_file: ${{ secrets.KEY_PROPERTIES }}
           service_account: ${{ secrets.SERVICE_ACCOUNT_JSON }}
-          flutter_version: "3.27.0"
+          flutter_version: "3.24.5"
