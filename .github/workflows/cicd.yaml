@@ -14,6 +14,6 @@ jobs:
       - uses: laguna-studios/fhs@1.0.8
         with:
           keystore_base64: ${{ secrets.KEYSTORE }}
-          key_properties_file: ${{ secrets.KEY_PROPERTIES }}
+          key_properties: ${{ secrets.KEY_PROPERTIES }}
           service_account: ${{ secrets.SERVICE_ACCOUNT_JSON }}
           flutter_version: "3.24.5"
