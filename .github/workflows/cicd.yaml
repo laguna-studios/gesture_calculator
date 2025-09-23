@@ -2,9 +2,9 @@ name: CICD
 run-name: Release Flutter App To Play Store
 on:
   workflow_dispatch:
-  schedule:
-    # schedule on 1st and 15th of every month
-    - cron: '0 15 1,15 * *'
+  push:
+    branches:
+     - main
 
 jobs:
   cicd:
